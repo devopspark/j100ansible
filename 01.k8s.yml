@@ -43,16 +43,9 @@
       debug:
         msg: "{{ swapon_output.stdout }}"
 
-    - name: Just get information about the repository whether or not it has already been cloned locally
-      ansible.builtin.git:
-        repo: 'https://github.com/devopspark/j100ansible.git'
-        dest: /home/ubuntu/
-        clone: yes
-        update: no
-
     - name: setup_all.sh file copy
       copy:
-        src: /home/ec2-user/01.setup_all.sh
+        src: /home/ec2-user/j100ansible/01.setup_all.sh
         dest: /home/ubuntu/01.setup_all.sh
         owner: ubuntu
         group: ubuntu
