@@ -1,0 +1,5 @@
+alias ap=ansible-playbook
+alias av=ansible-vault
+alias ssh-master='ssh -i jeparklabkeypair ubuntu@master'
+alias ssh-node1='ssh -i jeparklabkeypair ubuntu@node1'
+alias ssh-node2='ssh -i jeparklabkeypair ubuntu@node2'
