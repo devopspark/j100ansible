@@ -63,9 +63,9 @@
         mode: '0740'
     - name: excute 01-2.setup_all.sh
       command:
-        cmd: "sudo sh /home/ubuntu/01-1.setup_all.sh"
+        cmd: "sudo sh /home/ubuntu/01-2.setup_all.sh"
 
-      - name: 01-3.setup_all.sh file copy
+    - name: 01-3.setup_all.sh file copy
       copy:
         src: /home/ec2-user/j100ansible/01-3.setup_all.sh
         dest: /home/ubuntu/01-3.setup_all.sh
@@ -74,7 +74,7 @@
         mode: '0740'
     - name: excute 01-3.setup_all.sh
       command:
-        cmd: "sudo sh /home/ubuntu/01-1.setup_all.sh"
+        cmd: "sudo sh /home/ubuntu/01-3.setup_all.sh"
 
     - name: check needrestart(kernelhints, restart)
       command:
