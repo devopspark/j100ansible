@@ -1,0 +1,16 @@
+---
+- hosts: k8s
+  remote_user: ubuntu
+
+  tasks:
+    - name: 02.only_master.sh file copy
+      copy:
+        src: /home/ec2-user/02.only_master.sh
+        dest: /home/ubuntu/02.only_master.sh
+        owner: ubuntu
+        group: ubuntu
+        mode: '0740'
+
+    - name: excute 02.only_master.sh
+      command:
+        cmd: "sudo sh /home/ubuntu/02.only_master.sh"
