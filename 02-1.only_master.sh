@@ -31,3 +31,8 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.24.1/manifests/tigera-operator.yaml
 kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.24.1/manifests/custom-resources.yaml
 sleep 5
+
+# ubuntu 사용자가 kubectl 명령 실행 가능하도록 설정
+sudo mkdir -p ~ubuntu/.kube
+sudo cp -i /etc/kubernetes/admin.conf ~ubuntu/.kube/config
+sudo chown -R ubuntu:ubuntu ~ubuntu/.kube

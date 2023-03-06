@@ -9,12 +9,6 @@ cd etcd-${RELEASE}-linux-amd64
 sudo mv etcd etcdctl etcdutl /usr/local/bin
 sudo etcd --version
 
-# ubuntu 사용자가 kubectl 명령 실행 가능하도록 설정
-sudo mkdir -p ~ubuntu/.kube
-sudo cp -i /etc/kubernetes/admin.conf ~ubuntu/.kube/config
-sudo chown -R ubuntu:ubuntu ~ubuntu/.kube
-
-sudo su - ubuntu
 source <(kubectl completion bash); echo "source <(kubectl completion bash)" >> ~/.bashrc 
 kubectl get nodes >> /home/ubuntu/kubectl_nodes.log
 # NAME     STATUS   ROLES           AGE   VERSION
