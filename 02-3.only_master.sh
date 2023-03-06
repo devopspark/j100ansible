@@ -1,13 +1,13 @@
 #!/usr/bin/bash
 
 # etcd 설치
-cd ~
 export RELEASE=$(curl -s https://api.github.com/repos/etcd-io/etcd/releases/latest|grep tag_name | cut -d '"' -f 4)
 wget https://github.com/etcd-io/etcd/releases/download/${RELEASE}/etcd-${RELEASE}-linux-amd64.tar.gz
 tar xf etcd-${RELEASE}-linux-amd64.tar.gz
 cd etcd-${RELEASE}-linux-amd64
-sudo mv etcd etcdctl etcdutl /usr/local/bin
-sudo etcd --version
+sudo mv etcd etcdctl etcdutl /usr/local/bin/
+etcdctl version  >> etcd_util.log
+etcd --version  >> etcd_util.log
 
 source <(kubectl completion bash); echo "source <(kubectl completion bash)" >> ~/.bashrc 
 kubectl get nodes >> /home/ubuntu/kubectl_nodes.log

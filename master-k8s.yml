@@ -13,7 +13,7 @@
 
     - name: excute 02-1.only_master.sh
       command:
-        cmd: "sudo sh /home/ubuntu/02-1.only_master.sh"
+        cmd: "sh /home/ubuntu/02-1.only_master.sh"
 
     - name: 02-2.only_master.sh file copy
       copy:
@@ -25,7 +25,7 @@
 
     - name: excute 02-2.only_master.sh
       command:
-        cmd: "sudo sh /home/ubuntu/02-2.only_master.sh"
+        cmd: "sh /home/ubuntu/02-2.only_master.sh"
 
     - name: 02-3.only_master.sh file copy
       copy:
@@ -37,4 +37,4 @@
 
     - name: excute 02-3.only_master.sh
       command:
-        cmd: "sudo sh /home/ubuntu/02-3.only_master.sh"
+        cmd: "sh /home/ubuntu/02-3.only_master.sh"

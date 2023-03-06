@@ -2,6 +2,7 @@
 
 # control-plaine 컴포넌트 구성
 sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --cri-socket unix:///var/run/cri-dockerd.sock >> /home/ubuntu/kubeadm_init.log
+sudo chown ubuntu:ubuntu /home/ubuntu/kubeadm_init.log
 # ...
 # [addons] Applied essential addon: kube-proxy
 # Your Kubernetes control-plane has initialized successfully!
@@ -36,3 +37,8 @@ sleep 5
 sudo mkdir -p ~ubuntu/.kube
 sudo cp -i /etc/kubernetes/admin.conf ~ubuntu/.kube/config
 sudo chown -R ubuntu:ubuntu ~ubuntu/.kube
+
+# 자동완성 기능
+sudo apt-get install bash-completion -y
+sudo source <(kubectl completion bash) 
+sudo echo "source <(kubectl completion bash)" >> ~/.bashrc 
