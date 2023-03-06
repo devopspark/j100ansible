@@ -3,14 +3,40 @@
   remote_user: ubuntu
 
   tasks:
-    - name: 02.only_master.sh file copy
+    - name: 02-1.only_master.sh file copy
       copy:
-        src: /home/ec2-user/02.only_master.sh
-        dest: /home/ubuntu/02.only_master.sh
+        src: /home/ec2-user/02-1.only_master.sh
+        dest: /home/ubuntu/02-1.only_master.sh
         owner: ubuntu
         group: ubuntu
         mode: '0740'
 
-    - name: excute 02.only_master.sh
+    - name: excute 02-1.only_master.sh
       command:
-        cmd: "sudo sh /home/ubuntu/02.only_master.sh"
+        cmd: "sudo sh /home/ubuntu/02-1.only_master.sh"
+
+  tasks:
+    - name: 02-2.only_master.sh file copy
+      copy:
+        src: /home/ec2-user/02-2.only_master.sh
+        dest: /home/ubuntu/02-2.only_master.sh
+        owner: ubuntu
+        group: ubuntu
+        mode: '0740'
+
+    - name: excute 02-2.only_master.sh
+      command:
+        cmd: "sudo sh /home/ubuntu/02-2.only_master.sh"
+
+  tasks:
+    - name: 02-3.only_master.sh file copy
+      copy:
+        src: /home/ec2-user/02-3.only_master.sh
+        dest: /home/ubuntu/02-3.only_master.sh
+        owner: ubuntu
+        group: ubuntu
+        mode: '0740'
+
+    - name: excute 02-3.only_master.sh
+      command:
+        cmd: "sudo sh /home/ubuntu/02-3.only_master.sh"

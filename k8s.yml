@@ -50,9 +50,10 @@
         owner: ubuntu
         group: ubuntu
         mode: '0740'
+
     - name: excute 01-1.setup_all.sh
       command:
-        cmd: "sudo sh /home/ubuntu/01-1.setup_all.sh"
+        cmd: "sudo /home/ubuntu/01-1.setup_all.sh"
 
     - name: 01-2.setup_all.sh file copy
       copy:
@@ -61,9 +62,10 @@
         owner: ubuntu
         group: ubuntu
         mode: '0740'
+
     - name: excute 01-2.setup_all.sh
       command:
-        cmd: "sudo sh /home/ubuntu/01-2.setup_all.sh"
+        cmd: "sudo /home/ubuntu/01-2.setup_all.sh"
 
     - name: 01-3.setup_all.sh file copy
       copy:
@@ -72,9 +74,10 @@
         owner: ubuntu
         group: ubuntu
         mode: '0740'
+
     - name: excute 01-3.setup_all.sh
       command:
-        cmd: "sudo sh /home/ubuntu/01-3.setup_all.sh"
+        cmd: "sudo /home/ubuntu/01-3.setup_all.sh"
 
     - name: check needrestart(kernelhints, restart)
       command:
