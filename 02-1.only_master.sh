@@ -1,16 +1,17 @@
 #!/usr/bin/bash
 
+sudo -i
 # control-plaine 컴포넌트 구성
-sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --cri-socket unix:///var/run/cri-dockerd.sock >> /home/ubuntu/kubeadm_init.log
-sudo chown ubuntu:ubuntu /home/ubuntu/kubeadm_init.log
+kubeadm init --pod-network-cidr=192.168.0.0/16 --cri-socket unix:///var/run/cri-dockerd.sock >> /home/ubuntu/kubeadm_init.log
+chown ubuntu:ubuntu /home/ubuntu/kubeadm_init.log
 # ...
 # [addons] Applied essential addon: kube-proxy
 # Your Kubernetes control-plane has initialized successfully!
 
 # Kubectl을 명령 실행 허용하려면 kubeadm init 명령의 실행결과 나온 내용을 동작해야 함(인증서를 생성함)
-sudo mkdir -p $HOME/.kube
-sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown $(id -u):$(id -g) $HOME/.kube/config
+mkdir -p $HOME/.kube
+cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+chown $(id -u):$(id -g) $HOME/.kube/config
 
 # 토큰 값 확인
 # kubeadm token list
@@ -34,11 +35,11 @@ kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.24.1
 sleep 5
 
 # ubuntu 사용자가 kubectl 명령 실행 가능하도록 설정
-sudo mkdir -p ~ubuntu/.kube
-sudo cp -i /etc/kubernetes/admin.conf ~ubuntu/.kube/config
-sudo chown -R ubuntu:ubuntu ~ubuntu/.kube
+mkdir -p ~ubuntu/.kube
+cp -i /etc/kubernetes/admin.conf ~ubuntu/.kube/config
+chown -R ubuntu:ubuntu ~ubuntu/.kube
 
 # 자동완성 기능
-sudo apt-get install bash-completion -y
-sudo source <(kubectl completion bash) 
-sudo echo "source <(kubectl completion bash)" >> ~/.bashrc 
+apt-get install bash-completion -y
+source <(kubectl completion bash) 
+echo "source <(kubectl completion bash)" >> ~/.bashrc 

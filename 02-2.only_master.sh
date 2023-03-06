@@ -1,11 +1,12 @@
 #!/usr/bin/bash
 
+sudo -i
 # node 초기화 될때까지 기다림
 # watch kubectl get pods -n calico-system
-#sudo while [`kubectl get pods -n calico-system | awk '{print $3}' | grep -ie pending -e init`] ; do kubectl get pods -n calico-system >> /home/ubuntu/calico_status.log ; sleep 1; done
+#while [`kubectl get pods -n calico-system | awk '{print $3}' | grep -ie pending -e init`] ; do kubectl get pods -n calico-system >> /home/ubuntu/calico_status.log ; sleep 1; done
 
 kubectl get pods -n calico-system >> /home/ubuntu/calico_status.log
-sudo chown ubuntu:ubuntu /home/ubuntu/calico_status.log
+chown ubuntu:ubuntu /home/ubuntu/calico_status.log
 # NAME                                       READY   STATUS    RESTARTS   AGE
 # calico-kube-controllers-85666c5b94-927wg   1/1     Running   0          82s
 # calico-node-hcnp9                          1/1     Running   0          82s
@@ -14,15 +15,15 @@ sudo chown ubuntu:ubuntu /home/ubuntu/calico_status.log
 
 # 다시 확인
 kubectl get nodes >> /home/ubuntu/kubectl_nodes.log
-sudo chown ubuntu:ubuntu /home/ubuntu/kubectl_nodes.log
+chown ubuntu:ubuntu /home/ubuntu/kubectl_nodes.log
 # NAME     STATUS   ROLES           AGE     VERSION
 # master   Ready    control-plane   5m15s   v1.24.8
 
 # Calico Mode 변경- 지왕님 search 도움(고마워요 지왕님)
 # https://github.com/projectcalico/calico - release 버전확인후 조절.
-sudo curl -L https://github.com/projectcalico/calico/releases/download/v3.24.1/calicoctl-linux-amd64 -o calicoctl
-sudo chmod +x calicoctl
-sudo mv calicoctl /usr/bin/
+curl -L https://github.com/projectcalico/calico/releases/download/v3.24.1/calicoctl-linux-amd64 -o calicoctl
+chmod +x calicoctl
+mv calicoctl /usr/bin/
 
 calicoctl get ippool -o wide >> /home/ubuntu/calico_status.log
 # NAME                  CIDR             NAT    IPIPMODE   VXLANMODE     DISABLED   DISABLEBGPEXPORT   SELECTOR   
