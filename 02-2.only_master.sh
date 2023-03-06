@@ -22,7 +22,7 @@ sudo curl -L https://github.com/projectcalico/calico/releases/download/v3.24.1/c
 sudo chmod +x calicoctl
 sudo mv calicoctl /usr/bin
 
-sudo calicoctl get ippool -o wide >> /home/ubuntu/calico_status.log
+calicoctl get ippool -o wide >> /home/ubuntu/calico_status.log
 # NAME                  CIDR             NAT    IPIPMODE   VXLANMODE     DISABLED   DISABLEBGPEXPORT   SELECTOR   
 # default-ipv4-ippool   192.168.0.0/16   true   Never      CrossSubnet   false      false              all()
 
@@ -40,8 +40,8 @@ spec:
   vxlanMode: Never
 END
 
-sudo calicoctl apply -f ipipmode.yaml >> /home/ubuntu/calico_status.log
-sudo calicoctl get ippool -o wide >> /home/ubuntu/calico_status.log
+calicoctl apply -f ipipmode.yaml >> /home/ubuntu/calico_status.log
+calicoctl get ippool -o wide >> /home/ubuntu/calico_status.log
 # NAME                  CIDR             NAT    IPIPMODE   VXLANMODE   DISABLED   DISABLEBGPEXPORT   SELECTOR   
 # default-ipv4-ippool   192.168.0.0/16   true   Always     Never       false      false              all()
 
