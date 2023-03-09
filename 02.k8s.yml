@@ -7,11 +7,11 @@
   tasks:
     - name: Configure the needrestart.conf file - kernelhints
       command:
-        cmd: sed -i s,\#\$nrconf{kernelhints} = -1;,\$nrconf{kernelhints} = 0;,g /etc/needrestart/needrestart.conf
+        cmd: sed -i "s,\#\$nrconf{kernelhints} = -1;,\$nrconf{kernelhints} = 0;,g" /etc/needrestart/needrestart.conf
 
     - name: Configure the needrestart.conf file - restart
       command:
-        cmd: sed -i s,\#\$nrconf{restart} = 'i';,\$nrconf{restart} = 'l';,g /etc/needrestart/needrestart.conf
+        cmd: sed -i "s,\#\$nrconf{restart} = 'i';,\$nrconf{restart} = 'l';,g" /etc/needrestart/needrestart.conf
 
     - name: Add module /etc/modules-load.d/k8s.conf
       command:
