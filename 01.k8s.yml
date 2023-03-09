@@ -1,0 +1,49 @@
+---
+- hosts: k8s
+  remote_user: ubuntu
+  become: true
+  
+  tasks:
+    - name: set localtime
+      command:
+        cmd: sudo rm -f /etc/localtime
+
+    - name: symbolic link /etc/localtime
+      command:
+        cmd: sudo ln -s /usr/share/zoneinfo/Asia/Seoul /etc/localtime
+
+    - name: localtime output
+      command:
+        cmd: date
+      register: date_output
+
+    - name: SHOW localtime output
+      debug:
+        msg: {{ date_output.stdout }}
+
+    - name: os release
+      command:
+        cmd: grep PRETTY_NAME /etc/os-release
+      register: osver_output
+
+    - name: SHOW os release
+      debug:
+        msg: {{ osver_output.stdout }}
+
+    - name: FW status
+      command:
+        cmd: sudo ufw status
+      register: ufw_output
+
+    - name: SHOW FW status
+      debug:
+        msg: {{ ufw_output.stdout }}
+
+    - name: SWAP status
+      command:
+        cmd: swapon -s
+      register: swapon_output
+
+    - name: SHOW SWAP status
+      debug:
+        msg: {{ swapon_output.stdout }}

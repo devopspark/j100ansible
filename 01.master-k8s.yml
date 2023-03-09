@@ -1,0 +1,57 @@
+---
+- hosts: master
+  remote_user: ubuntu
+  become: true
+
+  tasks:
+    - name: kubeadm init
+      command:
+        cmd: kubeadm init --pod-network-cidr=192.168.0.0/16 --cri-socket unix:///var/run/cri-dockerd.sock >> /home/ubuntu/kubeadm_init.log
+
+    - name: Create .kube dir(root user)
+      command:
+        cmd: mkdir -p $HOME/.kube
+
+    - name: Copy kubernetes config file(root user)
+      command:
+        cmd: cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+
+    - name: Change file ownership(root user)
+      command:
+        cmd: chown $(id -u):$(id -g) $HOME/.kube/config
+
+    - name: Install Calico 1
+      command:
+        cmd: kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.24.1/manifests/tigera-operator.yaml
+
+    - name: Install Calico 2
+      command:
+        cmd: kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.24.1/manifests/custom-resources.yaml
+
+    - name: sleep 10
+      command:
+        cmd: sleep 10
+
+    - name: Create .kube dir(ubuntu user)
+      command:
+        cmd: mkdir -p ~ubuntu/.kube
+
+    - name: Copy kubernetes config file(ubuntu user)
+      command:
+        cmd: cp -i /etc/kubernetes/admin.conf ~ubuntu/.kube/config
+
+    - name: Change file ownership(ubuntu user)
+      command:
+        cmd: chown -R ubuntu:ubuntu ~ubuntu/.kube
+
+    - name: Install the bash-completion package
+      command:
+        cmd: apt-get install bash-completion -y
+
+    - name: source <(kubectl completion bash)
+      command:
+        cmd: source <(kubectl completion bash)
+
+    - name: echo source <(kubectl completion bash) >> ~/.bashrc 
+      command:
+        cmd: echo "source <(kubectl completion bash)" >> ~/.bashrc 

@@ -1,0 +1,26 @@
+---
+- hosts: k8s
+  remote_user: ubuntu
+  become: true
+
+# 01-2.setup_all.sh script
+  tasks:
+    - name: apt update
+      command:
+        cmd: apt update
+
+    - name: Install Docker Engine
+      command:
+        cmd: apt install -y docker.io
+
+    - name: Enable docker service
+      command:
+        cmd: systemctl enable --now docker
+
+    - name: Download cri-docker
+      command:
+        cmd: wget https://github.com/Mirantis/cri-dockerd/releases/download/v0.3.0/cri-dockerd_0.3.0.3-0.ubuntu-bionic_amd64.deb
+
+    - name: Install cri-docker
+      command:
+        cmd: dpkg -i cri-dockerd_0.3.0.3-0.ubuntu-bionic_amd64.deb

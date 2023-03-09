@@ -1,0 +1,41 @@
+---
+- hosts: master
+  remote_user: ubuntu
+  become: true
+
+  tasks:
+    - name: Export RELEASE variable
+      command:
+        cmd: export RELEASE=$(curl -s https://api.github.com/repos/etcd-io/etcd/releases/latest|grep tag_name | cut -d '"' -f 4)
+
+    - name: Download etcd
+      command:
+        cmd: wget https://github.com/etcd-io/etcd/releases/download/${RELEASE}/etcd-${RELEASE}-linux-amd64.tar.gz
+
+    - name: Extract tar file
+      command:
+        cmd: tar xf etcd-${RELEASE}-linux-amd64.tar.gz
+
+    - name: Change directory
+      command:
+        cmd: cd etcd-${RELEASE}-linux-amd64
+
+    - name: Move files
+      command:
+        cmd: mv etcd etcdctl etcdutl /usr/local/bin/
+
+    - name: etcdctl version
+      command:
+        cmd: etcdctl version  >> etcd_util.log
+
+    - name: etcd --version
+      command:
+        cmd: etcd --version  >> etcd_util.log
+
+    - name: bash completion
+      command:
+        cmd: source <(kubectl completion bash); echo "source <(kubectl completion bash)" >> ~/.bashrc 
+
+    - name: kubectl get nodes
+      command:
+        cmd: kubectl get nodes >> /home/ubuntu/kubectl_nodes.log
