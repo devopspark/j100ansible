@@ -5,11 +5,11 @@
 
   tasks:
     - name: kubectl get pods -n calico-system
-      command:
+      shell:
         cmd: kubectl get pods -n calico-system >> /home/ubuntu/calico_status.log
 
     - name: kubectl get nodes
-      command:
+      shell:
         cmd: kubectl get nodes >> /home/ubuntu/kubectl_nodes.log
 
     - name: Download calicoctl
@@ -25,7 +25,7 @@
         cmd: mv calicoctl /usr/bin/
 
     - name: calicoctl get 1
-      command:
+      shell:
         cmd: calicoctl get ippool -o wide >> /home/ubuntu/calico_status.log
 
     - name: Copy ipipmode.yaml file
@@ -37,9 +37,9 @@
         mode: '0740'
 
     - name: calicoctl apply -f ipipmode.yaml
-      command:
+      shell:
         cmd: calicoctl apply -f ipipmode.yaml >> /home/ubuntu/calico_status.log
 
     - name: calicoctl get 2
-      command:
+      shell:
         cmd: calicoctl get ippool -o wide >> /home/ubuntu/calico_status.log
