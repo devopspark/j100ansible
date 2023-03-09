@@ -17,9 +17,13 @@
       command:
         cmd: sudo curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
 
-    - name: Add the Kubernetes apt repository
-      command:
-        cmd: echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+    - name: Copy kubernetes.list file
+      copy:
+        src: /home/ec2-user/j100ansible/kubernetes.list
+        dest: /etc/apt/sources.list.d/kubernetes.list
+        owner: root
+        group: root
+        mode: '0644'
 
     - name: apt update
       command:
