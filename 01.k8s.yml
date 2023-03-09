@@ -19,7 +19,7 @@
 
     - name: SHOW localtime output
       debug:
-        msg: {{ date_output.stdout }}
+        msg: "{{ date_output.stdout }}"
 
     - name: os release
       command:
@@ -28,7 +28,7 @@
 
     - name: SHOW os release
       debug:
-        msg: {{ osver_output.stdout }}
+        msg: "{{ osver_output.stdout }}"
 
     - name: FW status
       command:
@@ -37,7 +37,7 @@
 
     - name: SHOW FW status
       debug:
-        msg: {{ ufw_output.stdout }}
+        msg: "{{ ufw_output.stdout }}"
 
     - name: SWAP status
       command:
@@ -46,4 +46,4 @@
 
     - name: SHOW SWAP status
       debug:
-        msg: {{ swapon_output.stdout }}
+        msg: "{{ swapon_output.stdout }}"
