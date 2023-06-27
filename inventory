@@ -1,5 +1,24 @@
+[k8sA]
+masterA
+node1A
+node2A
+
+[k8sB]
+masterB
+node1B
+node2B
+
+[k8sC]
+masterC
+node1C
+node2C
 
 [k8s]
-master
-node1
-node2
+k8sA
+k8sB
+k8sC
+
+[master]
+masterA
+masterB
+masterC
