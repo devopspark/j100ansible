@@ -1,11 +1,5 @@
 alias ap=ansible-playbook
 alias av=ansible-vault
-alias ssh-masterA='ssh -i jeparklabkeypair ubuntu@masterA'
-alias ssh-node1A='ssh -i jeparklabkeypair ubuntu@node1A'
-alias ssh-node2A='ssh -i jeparklabkeypair ubuntu@node2A'
-alias ssh-masterB='ssh -i jeparklabkeypair ubuntu@masterB'
-alias ssh-node1B='ssh -i jeparklabkeypair ubuntu@node1B'
-alias ssh-node2B='ssh -i jeparklabkeypair ubuntu@node2B'
-alias ssh-masterC='ssh -i jeparklabkeypair ubuntu@masterC'
-alias ssh-node1C='ssh -i jeparklabkeypair ubuntu@node1C'
-alias ssh-node2C='ssh -i jeparklabkeypair ubuntu@node2C'
+alias ssh-master='ssh -i jeparklabkeypair ubuntu@master'
+alias ssh-node1='ssh -i jeparklabkeypair ubuntu@node1'
+alias ssh-node2='ssh -i jeparklabkeypair ubuntu@node2'
