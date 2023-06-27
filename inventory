@@ -1,24 +1,24 @@
-[k8sA]
-masterA
-node1A
-node2A
+[k8sa]C
+mastera
+node1a
+node2a
 
-[k8sB]
-masterB
-node1B
-node2B
+[k8sb]
+masterb
+node1b
+node2b
 
-[k8sC]
-masterC
-node1C
-node2C
+[k8sc]
+masterc
+node1c
+node2c
 
 [k8s]
-k8sA
-k8sB
-k8sC
+k8sa
+k8sb
+k8sc
 
 [master]
-masterA
-masterB
-masterC
+mastera
+masterb
+masterc
