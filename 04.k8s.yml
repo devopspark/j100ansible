@@ -7,15 +7,15 @@
   tasks:
     - name: apt update
       command:
-        cmd: sudo apt-get update
+        cmd: sudo apt update
 
-    - name: Install apt-transport-https, ca-certificates, curl
+    - name: Install ca-certificates, curl
       command:
-        cmd: sudo apt-get install -y apt-transport-https ca-certificates curl
+        cmd: sudo apt install -y ca-certificates curl
 
     - name: Download the Google Cloud public signing key
       command:
-        cmd: sudo curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+        cmd: curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-archive-keyring.gpg
 
     - name: Copy kubernetes.list file
       copy:
@@ -27,11 +27,11 @@
 
     - name: apt update
       command:
-        cmd: sudo apt-get update
+        cmd: sudo apt update
 
     - name: Install kubelet, kubeadm, kubectl
       command:
-        cmd: sudo apt-get install -y kubelet kubeadm kubectl
+        cmd: sudo apt install -y kubelet kubeadm kubectl
 
     - name: apt-mark hold kubelet, kubeadm, kubectl
       command:
