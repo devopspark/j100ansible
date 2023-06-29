@@ -27,8 +27,12 @@ node2e
 k8sa
 k8sb
 k8sc
+k8sd
+k8se
 
 [master]
 mastera
 masterb
 masterc
+masterd
+mastere
