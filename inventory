@@ -13,6 +13,16 @@ masterc
 node1c
 node2c
 
+[k8sd]
+masterd
+node1d
+node2d
+
+[k8se]
+mastere
+node1e
+node2e
+
 [k8s]
 k8sa
 k8sb
