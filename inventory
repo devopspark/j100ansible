@@ -23,14 +23,14 @@ mastere
 node1e
 node2e
 
-[k8s]
+[k8s:children]
 k8sa
 k8sb
 k8sc
 k8sd
 k8se
 
-[master]
+[master:children]
 mastera
 masterb
 masterc
