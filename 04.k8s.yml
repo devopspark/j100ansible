@@ -14,7 +14,7 @@
         cmd: sudo apt install -y ca-certificates curl
 
     - name: Download the Google Cloud public signing key
-      command:
+      shell:
         cmd: curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-archive-keyring.gpg
 
     - name: Copy kubernetes.list file
