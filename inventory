@@ -30,7 +30,7 @@ k8sc
 k8sd
 k8se
 
-[master:children]
+[master]
 mastera
 masterb
 masterc
